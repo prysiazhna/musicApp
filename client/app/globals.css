@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-color: #155e75;
+    --secondary-color: #0B323E;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 11px;
+    background: white;
+    border-radius: 16px;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 11px;
+    background: white;
+    border-radius: 16px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 11px;
+    width: 11px;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+    box-shadow: -406px 0 0 400px var(--secondary-color);
+}
+
+
+input[type="range"]::-moz-range-thumb {
+    height: 11px;
+    width: 11px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid var(--secondary-color);
+    box-shadow: -407px 0 0 400px var(--secondary-color);
+}
+
+.range {
+    display: flex;
+    align-items: center;
+}
+
+.infiniteScroll {
+    overflow: hidden!important;
+}
