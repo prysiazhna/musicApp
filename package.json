@@ -4,5 +4,8 @@
   "scripts": {
     "build": "cd client && npm install && npm run build && cd ../server && npm install && npm run build",
     "start": "cd server && npm run start:prod"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }

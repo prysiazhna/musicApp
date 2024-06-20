@@ -5,6 +5,7 @@ import {FileModule} from "./file/file.module";
 import {ServeStaticModule} from "@nestjs/serve-static";
 import {PlaylistModule} from "./playlist/playlist.module";
 import {join} from "path";
+import {ConfigModule, ConfigService} from '@nestjs/config';
 
 @Module({
     imports: [
@@ -12,10 +13,19 @@ import {join} from "path";
             rootPath: join(__dirname, '..', 'uploads'),
             serveRoot: '/uploads/',
         }),
-    MongooseModule.forRoot('mongodb+srv://admin:admin@cluster0.oxd8t3u.mongodb.net/music-app?retryWrites=true&w=majority&appName=Cluster0'),
-    TrackModule,
-    PlaylistModule,
-    FileModule
-  ]
+        ConfigModule.forRoot({
+            isGlobal: true,
+        }),
+        MongooseModule.forRootAsync({
+            imports: [ConfigModule],
+            useFactory: async (configService: ConfigService) => ({
+                uri: configService.get<string>('MONGO_DB_URI'),
+            }),
+            inject: [ConfigService],
+        }),
+        TrackModule,
+        PlaylistModule,
+        FileModule
+    ]
 })
 export class AppModule {}
