@@ -16,3 +16,9 @@ export const deletePlaylist = async (playlistsId: number): Promise<Playlist> => 
     const response = await axios.delete(`${API_URLS.PLAYLISTS}/${playlistsId}`);
     return response.data;
 };
+
+export const getPlaylistIds = async () => {
+    const response = await axios.get(API_URLS.PLAYLISTS); // Змініть на відповідний URL для отримання плейлистів
+    const playlists: Playlist[] = response.data;
+    return playlists.map(playlist => ({id: playlist._id}));
+};

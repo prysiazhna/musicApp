@@ -23,3 +23,10 @@ export const deleteTrack = async (trackId: string): Promise<Track> => {
     const response =  await axios.delete(`${API_URLS.TRACKS}/${trackId}`);
     return response.data;
 };
+
+export const getTrackIds = async () => {
+    const response = await axios.get(API_URLS.ALL_TRACKS);
+    const tracks: Track[] = response.data;
+    return tracks.map(track => ({ id: track._id }));
+
+};
